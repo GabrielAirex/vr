@@ -112,6 +112,7 @@
                     const direction = new THREE.Vector3();
                     camera.object3D.getWorldDirection(direction);
                     direction.y = 0; // Mantém a direção horizontal
+                    direction.negate(); // Inverte a direção
                     direction.normalize(); // Normaliza a direção
 
                     // Adiciona a bullet à cena
