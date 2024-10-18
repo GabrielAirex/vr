@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>VR Scene with Bullet and Movement</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccreary/aframe-physics-system/master/dist/aframe-physics-system.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccreary/aframe-extras/v4.1.1/dist/aframe-extras.min.js"></script>
+</head>
+<body>
+    <a-scene vr-mode-ui="enabled: true" physics="gravity: -9.8">
+        <!-- Chão sem textura -->
+        <a-plane position="0 0 0" rotation="-90 0 0" width="100" height="100" color="#7BC8A4"></a-plane>
+
+        <!-- Luz -->
+        <a-light type="ambient" color="#FFF"></a-light>
+        <a-light type="point" intensity="1" position="2 4 4"></a-light>
+
+        <!-- Casa 1 -->
+        <a-box position="0 1 -5" width="3" height="2" depth="3" color="#8B4513"></a-box>
+        <a-cone position="0 3 -5" radius-bottom="2.5" height="2" color="#A52A2A"></a-cone>
+        <a-box position="0.7 0.5 -3.52" width="0.5" height="1" depth="0.05" color="#FFF"></a-box>
+        <a-box position="-0.7 1.2 -3.52" width="0.5" height="0.5" depth="0.05" color="#FFF"></a-box>
+
+        <!-- Casa 2 -->
+        <a-box position="-10 1 -10" width="3" height="2" depth="3" color="#A0522D"></a-box>
+        <a-cone position="-10 3 -10" radius-bottom="2.5" height="2" color="#FF6347"></a-cone>
+        <a-box position="-9.3 0.5 -9" width="0.5" height="1" depth="0.05" color="#FFF"></a-box>
+
+        <!-- Casa 3 -->
+        <a-box position="10 1 -15" width="3" height="2" depth="3" color="#CD853F"></a-box>
+        <a-cone position="10 3 -15" radius-bottom="2.5" height="2" color="#D2691E"></a-cone>
+        <a-box position="9.5 0.5 -14" width="0.5" height="1" depth="0.05" color="#FFF"></a-box>
+
+        <!-- Casa 4 -->
+        <a-box position="-15 1 -20" width="3" height="2" depth="3" color="#8B4513"></a-box>
+        <a-cone position="-15 3 -20" radius-bottom="2.5" height="2" color="#8B0000"></a-cone>
+        <a-box position="-14.5 0.5 -19" width="0.5" height="1" depth="0.05" color="#FFF"></a-box>
+
+        <!-- Casa 5 -->
+        <a-box position="15 1 -25" width="3" height="2" depth="3" color="#DEB887"></a-box>
+        <a-cone position="15 3 -25" radius-bottom="2.5" height="2" color="#A52A2A"></a-cone>
+        <a-box position="14.5 0.5 -24" width="0.5" height="1" depth="0.05" color="#FFF"></a-box>
+
+        <!-- Novas Casas à Esquerda -->
+        <a-box position="-20 1 -5" width="3" height="2" depth="3" color="#A0522D"></a-box>
+        <a-cone position="-20 3 -5" radius-bottom="2.5" height="2" color="#FF6347"></a-cone>
+
+        <!-- Novas Casas à Direita -->
+        <a-box position="20 1 -15" width="3" height="2" depth="3" color="#CD853F"></a-box>
+        <a-cone position="20 3 -15" radius-bottom="2.5" height="2" color="#D2691E"></a-cone>
+
+        <!-- Novas Casas na Parte de Trás -->
+        <a-box position="-5 1 -40" width="3" height="2" depth="3" color="#8B4513"></a-box>
+        <a-cone position="-5 3 -40" radius-bottom="2.5" height="2" color="#A52A2A"></a-cone>
+
+        <a-box position="-10 1 -40" width="3" height="2" depth="3" color="#A0522D"></a-box>
+        <a-cone position="-10 3 -40" radius-bottom="2.5" height="2" color="#FF6347"></a-cone>
+
+        <a-box position="5 1 -40" width="3" height="2" depth="3" color="#CD853F"></a-box>
+        <a-cone position="5 3 -40" radius-bottom="2.5" height="2" color="#D2691E"></a-cone>
+
+        <a-box position="10 1 -40" width="3" height="2" depth="3" color="#DEB887"></a-box>
+        <a-cone position="10 3 -40" radius-bottom="2.5" height="2" color="#A52A2A"></a-cone>
+
+        <!-- Prédios na parte de trás -->
+        <a-box position="-25 5 -40" width="5" height="10" depth="5" color="#808080"></a-box>
+        <a-box position="-20 7 -45" width="4" height="14" depth="4" color="#696969"></a-box>
+        <a-box position="-15 6 -50" width="6" height="12" depth="6" color="#A9A9A9"></a-box>
+        <a-box position="10 6 -40" width="5" height="12" depth="5" color="#708090"></a-box>
+        <a-box position="15 7 -45" width="4" height="14" depth="4" color="#778899"></a-box>
+        <a-box position="20 8 -50" width="6" height="16" depth="6" color="#B0C4DE"></a-box>
+
+        <!-- Árvore de frente para a casa -->
+        <a-cylinder position="0 1.5 5" radius="0.3" height="3" color="#8B4513"></a-cylinder>
+        <a-sphere position="0 3.5 5" radius="1.5" color="#228B22"></a-sphere>
+
+        <!-- Mais árvores ao redor -->
+        <a-cylinder position="-10 1.5 5" radius="0.3" height="3" color="#8B4513"></a-cylinder>
+        <a-sphere position="-10 3.5 5" radius="1.5" color="#228B22"></a-sphere>
+        <a-cylinder position="10 1.5 7" radius="0.3" height="3" color="#8B4513"></a-cylinder>
+        <a-sphere position="10 3.5 7" radius="1.5" color="#228B22"></a-sphere>
+        <a-cylinder position="0 1.5 -10" radius="0.3" height="3" color="#8B4513"></a-cylinder>
+        <a-sphere position="0 3.5 -10" radius="1.5" color="#228B22"></a-sphere>
+        <a-cylinder position="5 1.5 -10" radius="0.3" height="3" color="#8B4513"></a-cylinder>
+        <a-sphere position="5 3.5 -10" radius="1.5" color="#228B22"></a-sphere>
+
+        <!-- Bola que quica -->
+        <a-sphere position="1 1.25 -2" radius="0.5" color="#EF2D5E" shadow="true" animation="property: position; to: 1 3 -2; dir: alternate; dur: 1000; loop: true"></a-sphere>
+
+        <!-- Elemento caindo com gravidade -->
+        <a-sphere position="2 8 -4" radius="0.3" color="#FFD700" dynamic-body></a-sphere>
+
+        <!-- Controle de Câmera -->
+        <a-camera id="camera" wasd-controls look-controls position="0 1.6 0" shadow="true"></a-camera>
+
+        <script>
+            const scene = document.querySelector('a-scene');
+            const camera = document.querySelector('#camera');
+
+            // Adiciona a funcionalidade de tiro
+            document.addEventListener('keydown', function(event) {
+                if (event.code === 'Space') {
+                    const bullet = document.createElement('a-sphere');
+                    bullet.setAttribute('radius', '0.1');
+                    bullet.setAttribute('color', '#FF0000');
+                    bullet.setAttribute('position', camera.getAttribute('position').x + ' ' + (camera.getAttribute('position').y - 0.1) + ' ' + camera.getAttribute('position').z);
+                    bullet.setAttribute('dynamic-body', ''); // Para a física
+                    bullet.setAttribute('shadow', '');
+
+                    // Calcula a direção do tiro
+                    const direction = new THREE.Vector3();
+                    camera.object3D.getWorldDirection(direction);
+                    direction.y = 0; // Mantém a direção horizontal
+                    direction.normalize(); // Normaliza a direção
+
+                    // Adiciona a bullet à cena
+                    scene.appendChild(bullet);
+
+                    // Mover a bala para frente a partir do ponto de vista da câmera
+                    const speed = 2; // Define uma velocidade mais baixa para a bala
+                    let distanceTraveled = 0; // Distância percorrida pela bala
+
+                    const moveBullet = () => {
+                        bullet.object3D.position.add(direction.clone().multiplyScalar(speed * 0.05)); // Mover a bala na direção da câmera
+                        distanceTraveled += speed * 0.05; // Atualiza a distância percorrida
+                         
+                        // Remove a bala após atingir uma distância máxima (opcional)
+                        if (distanceTraveled < 50) { // Distância máxima que a bala pode percorrer
+                            requestAnimationFrame(moveBullet); // Chama a função de movimento novamente
+                        } else {
+                            scene.removeChild(bullet); // Remove a bala após atingir a distância máxima
+                        }
+                    };
+                    moveBullet(); // Inicia o movimento da bala
+                }
+            });
+        </script>
+        
+    </a-scene>
+</body>
+</html>
